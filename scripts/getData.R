@@ -1,3 +1,4 @@
+#!/usr/bin/Rscript
 ### Import data
 ## http://api.citybik.es/
 
