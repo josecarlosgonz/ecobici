@@ -1,8 +1,7 @@
 ecobici
 =======
 
-Predict ecobici use in Mexico City
-<<<<<<< HEAD
+Time elapsed map of bikes in Mexico City
 
 Data
 ----
