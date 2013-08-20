@@ -1,5 +1,6 @@
 ### Import data
 ## http://api.citybik.es/
+
 library(RJSONIO)
 
 help(RJSONIO)
@@ -12,4 +13,5 @@ varNames <- names(data[[1]]) #get var names
 data  <- do.call(rbind.data.frame, data) #Unlist data
 names(data)  <- varNames
 
-head(data)
+summary(data)
+data$addres[1]
