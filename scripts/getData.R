@@ -4,15 +4,26 @@
 
 library(RJSONIO)
 
-help(RJSONIO)
+getData <- function(){
+  if(file.exists("ecobici.csv")==TRUE){
+    print("File exists...appending data")
+    data  <- fromJSON("http://api.citybik.es/ecobici.json")
+    varNames <- names(data[[1]]) #get var names
+    data  <- do.call(rbind.data.frame, data) #Unlist data
+    names(data)  <- varNames
+    temp  <- read.csv("ecobici.csv")
+    data <- rbind(temp,data)
+    write.csv(data,"ecobici.csv", row.names=F)
+    
+  } else{
+    print("no File.... getting data from API")
+    data  <- fromJSON("http://api.citybik.es/ecobici.json")
+    varNames <- names(data[[1]]) #get var names
+    data  <- do.call(rbind.data.frame, data) #Unlist data
+    names(data)  <- varNames #assign var names
+    write.csv(data,"ecobici.csv", row.names=F)
+  }
+  
+}
 
-data  <- fromJSON("http://api.citybik.es/ecobici.json")
-
-str(data) #Explore a bit
-varNames <- names(data[[1]]) #get var names
-
-data  <- do.call(rbind.data.frame, data) #Unlist data
-names(data)  <- varNames
-
-summary(data)
-data$addres[1]
+getData()
