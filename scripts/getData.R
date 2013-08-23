@@ -12,7 +12,7 @@ getData <- function(){
     varNames <- names(data[[1]]) #get var names
     data  <- do.call(rbind.data.frame, data) #Unlist data
     names(data)  <- varNames
-    data$timeMX  <- timeStampMX
+    data$timeMX  <-rep(timeStampMX, length.out=length(data[,1]))
     temp  <- read.csv("ecobici.csv")
     data <- rbind(temp,data)
     write.csv(data,"ecobici.csv", row.names=F)
@@ -24,7 +24,7 @@ getData <- function(){
     varNames <- names(data[[1]]) #get var names
     data  <- do.call(rbind.data.frame, data) #Unlist data
     names(data)  <- varNames #assign var names
-    data$timeMX  <- timeStampMX
+    data$timeMX  <- rep(timeStampMX, length.out=length(data[,1]))
     write.csv(data,"ecobici.csv", row.names=F)
   }
   
